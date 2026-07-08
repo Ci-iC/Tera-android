@@ -1,0 +1,8 @@
+{
+  "appId": "com.tera.lingshou",
+  "appName": "灵兽秘境",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#120c07"
+  }
+}

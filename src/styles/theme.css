@@ -1,0 +1,135 @@
+/* ============================================================
+   Tera 设计系统 — 厚涂绘本奇幻风 · 拟物化
+   木 / 石 / 羊皮纸 / 金边 / 宝石蓝，匹配 location 美术
+   ============================================================ */
+:root {
+  /* —— 基底：木与石 —— */
+  --wood-dark:   #3a2417;
+  --wood:        #6b4527;
+  --wood-light:  #8a5a34;
+  --stone-dark:  #4a4239;
+  --stone:       #6f6555;
+  --stone-light: #a89b82;
+
+  /* —— 羊皮纸 / 面板 —— */
+  --parch:       #f4e4c1;
+  --parch-2:     #e8d3a3;
+  --parch-ink:   #4a3620;
+  --parch-ink-2: #7a5c38;
+
+  /* —— 金 —— */
+  --gold:        #e8b84b;
+  --gold-deep:   #b6821f;
+  --gold-light:  #f6d987;
+
+  /* —— 宝石（来自孵化台蓝钻）—— */
+  --gem:         #3aa8d8;
+  --gem-deep:    #1c6a97;
+  --gem-light:   #7fd6f0;
+
+  /* —— 三大生态主题色（对应探索地）—— */
+  --forest:  #5a9e3a;   --forest-deep:  #2f5f22;
+  --volcano: #e8641f;   --volcano-deep: #8a2a10;
+  --beach:   #2fb6c4;   --beach-deep:   #1a6f88;
+
+  /* —— 稀有度 —— */
+  --r-common:    #b7b0a2;
+  --r-uncommon:  #5fbf6d;
+  --r-rare:      #4a9fe0;
+  --r-epic:      #b06fe0;
+  --r-legendary: #f0a93a;
+
+  /* —— 语义 —— */
+  --ink:      #3a2c1a;
+  --ink-soft: #6b5638;
+  --bg-deep:  #1c150e;
+
+  /* —— 字体 —— */
+  --font-display: "Songti SC", "STZhongsong", "SimSun", Georgia, "Times New Roman", serif;
+  --font-body: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+
+  /* —— 圆角 / 阴影 —— */
+  --r-sm: 8px;  --r-md: 14px;  --r-lg: 22px;  --r-xl: 32px;
+  --sh-1: 0 2px 6px rgba(0,0,0,.25);
+  --sh-2: 0 6px 18px rgba(0,0,0,.35);
+  --sh-3: 0 14px 40px rgba(0,0,0,.45);
+  --edge-gold: 0 0 0 2px var(--gold-deep), 0 0 0 4px var(--gold);
+}
+
+/* ---------- 羊皮纸面板 ---------- */
+.panel {
+  position: relative;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,.25), transparent 60%),
+    linear-gradient(180deg, var(--parch) 0%, var(--parch-2) 100%);
+  border-radius: var(--r-lg);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(120,80,30,.25),
+    var(--sh-2);
+  color: var(--parch-ink);
+}
+/* 木框变体 */
+.panel--wood {
+  padding: 10px;
+  background: linear-gradient(180deg, var(--wood-light), var(--wood) 45%, var(--wood-dark));
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.18),
+    inset 0 -4px 10px rgba(0,0,0,.5),
+    var(--sh-2);
+}
+.panel--wood > .panel__inner {
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,.22), transparent 55%),
+    linear-gradient(180deg, var(--parch), var(--parch-2));
+  border-radius: calc(var(--r-lg) - 6px);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.5), inset 0 -3px 8px rgba(120,80,30,.25);
+  padding: 18px 20px;
+}
+/* 金边描饰 */
+.gilt { box-shadow: var(--edge-gold), var(--sh-2); }
+
+/* ---------- 标题 ---------- */
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: .04em;
+  text-shadow: 0 2px 0 var(--wood-dark), 0 3px 6px rgba(0,0,0,.6);
+}
+.title--ink { color: var(--parch-ink); text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r-md);
+  padding: 12px 22px;
+  font-size: 15px;
+  letter-spacing: .03em;
+  color: #fff;
+  position: relative;
+  transition: transform .08s ease, filter .15s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.4), inset 0 -4px 8px rgba(0,0,0,.3), var(--sh-1);
+}
+.btn:active { transform: translateY(2px); filter: brightness(.95); }
+.btn:hover  { filter: brightness(1.06); }
+.btn--gem   { background: linear-gradient(180deg, var(--gem-light), var(--gem) 45%, var(--gem-deep)); }
+.btn--gold  { background: linear-gradient(180deg, var(--gold-light), var(--gold) 45%, var(--gold-deep)); color: var(--wood-dark); text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+.btn--wood  { background: linear-gradient(180deg, var(--wood-light), var(--wood) 45%, var(--wood-dark)); }
+.btn--ghost { background: rgba(60,40,20,.35); box-shadow: inset 0 0 0 2px rgba(240,220,180,.4); }
+.btn:disabled { filter: grayscale(.6) brightness(.8); cursor: not-allowed; }
+
+/* ---------- 稀有度标记 ---------- */
+.rarity-dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 6px currentColor, inset 0 0 3px rgba(255,255,255,.7); }
+.r-common    { color: var(--r-common); }
+.r-uncommon  { color: var(--r-uncommon); }
+.r-rare      { color: var(--r-rare); }
+.r-epic      { color: var(--r-epic); }
+.r-legendary { color: var(--r-legendary); }
+
+/* ---------- 分隔线 ---------- */
+.rule { height: 3px; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--gold-deep), transparent); opacity: .6; }

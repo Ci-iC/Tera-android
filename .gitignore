@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+.vite/
+
+# Capacitor / Android 构建产物（android/.gitignore 另有细则）
+android/.gradle/
+android/app/build/
+android/build/
+android/capacitor-cordova-android-plugins/
