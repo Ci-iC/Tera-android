@@ -46,7 +46,7 @@ function PatternedRows({ label, g, baseLoc, patLoc, comboName }: {
 }) {
   const be = expr(g, baseLoc), pe = expr(g, patLoc)
   return (
-    <div style={{ background: 'rgba(120,80,30,.10)', borderRadius: 10, padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+    <div style={{ background: 'rgba(120,80,30,.10)', borderRadius: 10, padding: '6px 9px', display: 'flex', flexDirection: 'column', gap: 3 }}>
       <div className="row spread" style={{ fontSize: 13 }}>
         <span className="row gap8"><Swatch hex={be.hex} /><Swatch hex={pe.hex} /><b style={{ color: 'var(--parch-ink)' }}>{label}</b></span>
         <b style={{ color: 'var(--parch-ink)' }}>{comboName}</b>
@@ -92,8 +92,8 @@ export default function CreatureDetail({
 
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="panel panel--wood" style={{ width: 'min(92%, 560px)', maxHeight: '90%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }} onClick={(e) => e.stopPropagation()}>
-        <div className="panel__inner" style={{ display: 'flex', flexDirection: 'column', gap: 12, overflowY: 'auto', minHeight: 0, flex: '1 1 auto' }}>
+      <div className="panel panel--wood" style={{ width: 'min(92%, 560px)' }} onClick={(e) => e.stopPropagation()}>
+        <div className="panel__inner" style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: '14px 16px' }}>
           <div className="row spread">
             <div>
               <div className="row gap8" style={{ alignItems: 'center' }}>
@@ -107,11 +107,11 @@ export default function CreatureDetail({
 
           <div className="center-col">
             <div style={{ background: 'radial-gradient(circle at 50% 35%, rgba(255,255,255,.5), transparent 65%)', borderRadius: 18 }}>
-              <MonsterSprite genotype={g} size={190} seed={hashSeed(creature.uid)} />
+              <MonsterSprite genotype={g} size={132} seed={hashSeed(creature.uid)} />
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <PatternedRows label="主色" g={g} baseLoc="primary_base" patLoc="primary_pat" comboName={ph.primary.comboName} />
             <PatternedRows label="辅色" g={g} baseLoc="secondary_base" patLoc="secondary_pat" comboName={ph.secondary.comboName} />
             <ColorRow label="装饰色1" g={g} locus="accent1" />
