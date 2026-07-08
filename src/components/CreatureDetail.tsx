@@ -92,8 +92,8 @@ export default function CreatureDetail({
 
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="panel panel--wood" style={{ width: 'min(92%, 560px)', maxHeight: '90%' }} onClick={(e) => e.stopPropagation()}>
-        <div className="panel__inner" style={{ display: 'flex', flexDirection: 'column', gap: 12, overflowY: 'auto' }}>
+      <div className="panel panel--wood" style={{ width: 'min(92%, 560px)', maxHeight: '90%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }} onClick={(e) => e.stopPropagation()}>
+        <div className="panel__inner" style={{ display: 'flex', flexDirection: 'column', gap: 12, overflowY: 'auto', minHeight: 0, flex: '1 1 auto' }}>
           <div className="row spread">
             <div>
               <div className="row gap8" style={{ alignItems: 'center' }}>
