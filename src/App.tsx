@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useGame, type Screen } from './state/store'
 import Title from './screens/Title'
 import Pen from './screens/Pen'
@@ -16,11 +17,30 @@ const SCREENS: Record<Screen, () => JSX.Element> = {
   title: Title, world: Pen, pen: Pen, explore: Explore, hatchery: Hatchery, codex: Codex,
 }
 
+// 设计尺寸（4:3）——所有界面按此固定尺寸布局，再整体缩放
+const DESIGN_W = 900
+const DESIGN_H = 675
+
 export default function App() {
   const screen = useGame((s) => s.screen)
   const coins = useGame((s) => s.coins)
   const go = useGame((s) => s.go)
   const backToTitle = useGame((s) => s.backToTitle)
+
+  // 按窗口大小整体等比缩放视口，保证任意尺寸下比例一致、不变形
+  useEffect(() => {
+    const fit = () => {
+      const s = Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H)
+      document.documentElement.style.setProperty('--vp-scale', String(s))
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    window.addEventListener('orientationchange', fit)
+    return () => {
+      window.removeEventListener('resize', fit)
+      window.removeEventListener('orientationchange', fit)
+    }
+  }, [])
 
   // 封面独占整个视口,没有资源条和导航
   if (screen === 'title') {

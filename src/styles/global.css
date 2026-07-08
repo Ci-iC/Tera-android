@@ -14,15 +14,21 @@ button { font: inherit; }
 .stage {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   background:
     radial-gradient(120% 120% at 50% 0%, #2a2013, #120c07 80%);
 }
+/* 固定 4:3 设计尺寸，整体按 --vp-scale 等比缩放去适配任意窗口/屏幕。
+   这样字号、精灵、间距全部同比例缩放，永不变形。 */
 .viewport {
   position: relative;
-  width: min(100vw, calc(100vh * 4 / 3));
-  height: min(100vh, calc(100vw * 3 / 4));
+  width: 900px;
+  height: 675px;
+  flex: none;
   overflow: hidden;
   box-shadow: var(--sh-3);
+  transform: scale(var(--vp-scale, 1));
+  transform-origin: center center;
 }
 .scene {
   position: absolute; inset: 0;
